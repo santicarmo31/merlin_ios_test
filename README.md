@@ -9,17 +9,28 @@ This test consists of an already built application that downloads information fr
 
 # Your Challenges 
 
-1. Make the project run first, fix any error you may encounter.
+1. Make the project run first, fix any error you may find.
 2. Make the app universal
 3. The app right now only look correct in phone 6 size devices but you must make it look correct in all iOS devices
 4. The app have some crashes that need to be addressed and the code have some issues that potentially can make the app crash. Find them and fix them
 5. Finally, the app has some room for improvements:
-   * From the UX/UI side, make the app a little bit more professional, Add feedback to the user, add animations 
-     for interactions, etc
-   * From the programming side, make changes you may think are best practices, better architecture, make used of 
-     design patterns, SOLID, etc
+
+   * From the UX/UI side, make the app a little bit more professional, Add feedback to the user, add animations for interactions, etc.
+
+   * From the programming side, make changes you may think are best practices, better architecture, make used of  design patterns, SOLID, etc.
+   
 6. Please describe your technical decisions that allow us understand your new proposal. You can use the README.md file
 
+# Nice to have
+
+1. Unit tests implementation
+2. Use a context diagram to explain your architectural proposal 
+
+
+# Bonus
+
+1. UI/UX proposals 
+2. UI tests implementation
 
 
 
