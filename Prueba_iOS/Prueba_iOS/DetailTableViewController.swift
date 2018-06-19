@@ -41,16 +41,19 @@ class DetailTableViewController: UITableViewController {
         }
         
         ImageCacheHandler().imageForUrl(imageUlr) { (image) in
-            if image == nil
-            {
-                self.appImage.image = UIImage(named: "no_image_black")
+            DispatchQueue.main.async {
+                                
+                if image == nil
+                {
+                    self.appImage.image = UIImage(named: "no_image_black")
+                }
+                else
+                {
+                    self.appImage.image = image
+                }
+                
+                self.tableView.reloadData()
             }
-            else
-            {
-                self.appImage.image = image
-            }
-            
-            self.tableView.reloadData()
         }
     }
 

@@ -84,6 +84,9 @@ class AppsTableViewController: UITableViewController {
         }
         
         self.imageHandler.imageForUrl(imageUlr, andReturn: { (image) in
+            DispatchQueue.main.async {
+                
+            
             if image == nil
             {
                 appCell.appImage.image = UIImage(named: "no_image_black")
@@ -91,6 +94,7 @@ class AppsTableViewController: UITableViewController {
             else
             {
                 appCell.appImage.image = image
+            }
             }
         })
     }

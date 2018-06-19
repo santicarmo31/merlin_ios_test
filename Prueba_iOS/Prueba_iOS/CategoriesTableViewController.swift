@@ -27,14 +27,17 @@ class CategoriesTableViewController: UITableViewController {
         
         let createDatabase = { () -> Void in
             
+                
+            
             let networkHandler: NetworkHandler = NetworkHandler()
             networkHandler.jSonWith("https://www.reddit.com/reddits.json", andReturn: { (dic, error) in
-                
+            DispatchQueue.main.async {
                 if error == nil
                 {
                     let storeHandler: StoreHandler = StoreHandler()
                     storeHandler.createLocalDataBaseWith(dic!)
                     self.loadObjects()
+                }
                 }
             });
         }
@@ -107,7 +110,7 @@ class CategoriesTableViewController: UITableViewController {
         {
             let category: Category = dataSource![indexPath.row - 1]
             categoryCell.categoryLabel.text = (category.name == "Undefined") ? "Sin Categoría" : category.name
-            categoryCell.categoryImage.image = UIImage(named: category.imageName!)
+            categoryCell.categoryImage.image = UIImage(named: category.imageName ?? "")
         }
     }
     
