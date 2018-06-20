@@ -7,16 +7,23 @@
 //
 
 import UIKit
-import RealmSwift
 
-class App: Object {
+protocol App {
+    var bannerImg: String? { get }
+     var _id: String? { get }
+     var summitText: String? { get }
+     var displayText: String? { get }
+     var title: String? { get }
+     var iconImg: String? { get }
+     var category: Category? { get }
+}
 
-    dynamic var bannerImg: String?
-    dynamic var _id: String?
-    dynamic var summitText: String?
-    dynamic var displayText: String?
-    dynamic var title: String?
-    dynamic var iconImg: String?
-    dynamic var category: Category?
-    
+struct RawApp: App {
+    var bannerImg: String?
+    var _id: String?
+    var summitText: String?
+    var displayText: String?
+    var title: String?
+    var iconImg: String?
+    var category: Category?
 }

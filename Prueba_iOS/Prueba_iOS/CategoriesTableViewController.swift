@@ -7,88 +7,57 @@
 //
 
 import UIKit
-import RealmSwift
 import AFNetworking
 
 class CategoriesTableViewController: UITableViewController {
 
-    var dataSource: Results<Category>?
-    var loadObjects: (() -> ())!
+    var dataSource: [Category] = Array()
+    var presenter: AppPresenter!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        let realm = try! Realm()
         
-        self.loadObjects = { () -> Void in
-            self.dataSource = realm.objects(Category.self)
-            self.tableView.reloadData()
-        }
+        setupPresenter()
         
-        let createDatabase = { () -> Void in
-            
-                
-            
-            let networkHandler: NetworkHandler = NetworkHandler()
-            networkHandler.jSonWith("https://www.reddit.com/reddits.json", andReturn: { (dic, error) in
-            DispatchQueue.main.async {
-                if error == nil
-                {
-                    let storeHandler: StoreHandler = StoreHandler()
-                    storeHandler.createLocalDataBaseWith(dic!)
-                    self.loadObjects()
-                }
-                }
-            });
-        }
+        presenter.loadData()
         
-        let manager: AFNetworkReachabilityManager = AFNetworkReachabilityManager.shared()
-        manager.setReachabilityStatusChange { (status) in
-            
-            if status == AFNetworkReachabilityStatus.notReachable
-            {
-                let message: AGPushNote = AGPushNote()
-                message.setDefaultUI()
-                message.message = "Funcionando en modo Offline"
-                message.iconImage = UIImage(named: "no_wifi")
-                message.showAtBottom = true
-                
-                AGPushNoteView.showNotification(message)
-                AGPushNoteView.setCloseAction({})
-                AGPushNoteView.setMessageAction({ (pushNote) in })
-                self.loadObjects()
-            }
-            else
-            {
-                AGPushNoteView.close(completion: {})
-                createDatabase()
-            }
-        };
+//        let manager: AFNetworkReachabilityManager = AFNetworkReachabilityManager.shared()
+//        manager.setReachabilityStatusChange { (status) in
+//
+//            if status == AFNetworkReachabilityStatus.notReachable
+//            {
+//                let message: AGPushNote = AGPushNote()
+//                message.setDefaultUI()
+//                message.message = "Funcionando en modo Offline"
+//                message.iconImage = UIImage(named: "no_wifi")
+//                message.showAtBottom = true
+//
+//                AGPushNoteView.showNotification(message)
+//                AGPushNoteView.setCloseAction({})
+//                AGPushNoteView.setMessageAction({ (pushNote) in })
+//                self.loadObjects()
+//            }
+//            else
+//            {
+//                AGPushNoteView.close(completion: {})
+//                self.presenter.showCategories()
+//            }
+//        };
         
-        manager.startMonitoring()
-        // Do any additional setup after loading the view.
+//        manager.startMonitoring()
+        
     }
 
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        super.didReceiveMemoryWarning()        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-       
         return 67.0;
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
-        if let data = dataSource
-        {
-            return data.count + 1
-        }
-        else
-        {
-            return 0
-        }
+        return dataSource.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -108,7 +77,7 @@ class CategoriesTableViewController: UITableViewController {
         }
         else
         {
-            let category: Category = dataSource![indexPath.row - 1]
+            let category: Category = dataSource[indexPath.row - 1]
             categoryCell.categoryLabel.text = (category.name == "Undefined") ? "Sin Categoría" : category.name
             categoryCell.categoryImage.image = UIImage(named: category.imageName ?? "")
         }
@@ -125,7 +94,25 @@ class CategoriesTableViewController: UITableViewController {
         if (segue.identifier == "ShowApp")
         {
             let controller: AppsTableViewController = segue.destination as! AppsTableViewController
-            controller.category = (indexPath!.row == 0) ? nil : self.dataSource![indexPath!.row - 1];
+            controller.category = (indexPath!.row == 0) ? nil : self.dataSource[indexPath!.row - 1];
         }
     }
+    
+    private func setupPresenter() {
+        presenter = AppPresenter(view: self)
+    }
 }
+
+extension CategoriesTableViewController: AppView {
+    func dataLoaded() {
+        print("Cargue la data")
+    }
+    
+    func list(apps: [App]) {}
+    
+    func list(categories: [Category]) {        
+            self.dataSource = categories
+            self.tableView.reloadData()
+    }
+}
+

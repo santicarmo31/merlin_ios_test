@@ -7,15 +7,15 @@
 //
 
 import UIKit
-import RealmSwift
 
-class Category: Object {
+protocol Category {
+    var _id: String? { get }
+    var name: String? { get }
+    var imageName: String? { get }
+}
 
-    dynamic var _id: String?
-    dynamic var name: String?
-    dynamic var imageName: String?
-    
-    override static func primaryKey() -> String? {
-        return "_id"
-    }
+struct RawCategory: Category {
+    var _id: String?
+    var name: String?
+    var imageName: String?
 }

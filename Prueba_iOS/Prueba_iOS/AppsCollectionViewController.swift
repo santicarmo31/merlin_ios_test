@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import RealmSwift
 
 class AppsCollectionViewController: UICollectionViewController {
 
-    var dataSource: Results<App>?
+    var dataSource: [App] = Array()
     var imageHandler: ImageCacheHandler = ImageCacheHandler()
     var category: Category?
     
@@ -31,16 +30,14 @@ class AppsCollectionViewController: UICollectionViewController {
             self.navigationController?.navigationController?.navigationBar.shadowImage = UIImage();
         }
         
-        let realm = try! Realm()
-        
         if (self.category != nil)
         {
-            let pred: NSPredicate = NSPredicate(format: "category.name = %@", self.category!.name!)
-            self.dataSource =  realm.objects(App.self).filter(pred)
+//            let pred: NSPredicate = NSPredicate(format: "category.name = %@", self.category!.name!)
+//            self.dataSource =  RealmManager.shared.all(for: RealmApp.self).filter(pred)
         }
         else
         {
-            self.dataSource =  realm.objects(App.self)
+            self.dataSource =  RealmManager.shared.all(for: RealmApp.self)
         }
         
         self.collectionView?.reloadData()
@@ -62,29 +59,21 @@ class AppsCollectionViewController: UICollectionViewController {
         
         let navController: UINavigationController =  segue.destination as! UINavigationController
         let controller: DetailTableViewController = navController.viewControllers.first as! DetailTableViewController
-        controller.app = self.dataSource![indexPath!.row];
+        controller.app = self.dataSource[indexPath!.row];
     }
     
 
     // MARK: UICollectionViewDataSource
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if let data = dataSource
-        {
-            return data.count
-        }
-        else
-        {
-            return 0
-        }
+        return dataSource.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AppCell", for: indexPath)
         let appCell: AppCollectionViewCell = cell as! AppCollectionViewCell
-        let app: App = self.dataSource![indexPath.row]
+        let app: App = self.dataSource[indexPath.row]
         
         appCell.appTitle.text = app.title
         appCell.appDescription.text = app.summitText

@@ -7,38 +7,36 @@
 //
 
 import UIKit
-import RealmSwift
 import AFNetworking
 
 class CategoriesTableViewIpadController: UITableViewController {
     
-    var dataSource: Results<Category>?
+    var dataSource: [Category] = Array()
+//    var presenter: CategoriesPresenter
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        let realm = try! Realm()
-        
         let loadObjects = { () -> Void in
             
-            self.dataSource = realm.objects(Category.self)
+            self.dataSource = RealmManager.shared.all(for: RealmCategory.self)
             self.tableView.reloadData()
         }
         
-        let createDatabase = { () -> Void in
-            
-            let networkHandler: NetworkHandler = NetworkHandler()
-            networkHandler.jSonWith("https://www.reddit.com/reddits.json", andReturn: { (dic, error) in
-                
-                if error == nil
-                {
-                    let storeHandler: StoreHandler = StoreHandler()
-                    storeHandler.createLocalDataBaseWith(dic!)
-                    loadObjects()
-                }
-            });
-        }
+//        let createDatabase = { () -> Void in
+//
+//            let networkHandler: NetworkHandler = NetworkHandler()
+//            networkHandler.jSonWith("https://www.reddit.com/reddits.json", andReturn: { (dic, error) in
+//
+//                if error == nil
+//                {
+//                    let storeHandler: StoreHandler = StoreHandler()
+//                    storeHandler.createLocalDataBaseWith(dic!)
+//                    loadObjects()
+//                }
+//            });
+//        }
         
         let manager: AFNetworkReachabilityManager = AFNetworkReachabilityManager.shared()
         manager.setReachabilityStatusChange { (status) in
@@ -59,7 +57,7 @@ class CategoriesTableViewIpadController: UITableViewController {
             else
             {
                 AGPushNoteView.close(completion: {})
-                createDatabase()
+//                createDatabase()
             }
         };
         
@@ -78,15 +76,7 @@ class CategoriesTableViewIpadController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        
-        if let data = dataSource
-        {
-            return data.count + 1
-        }
-        else
-        {
-            return 0
-        }
+        return dataSource.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -106,7 +96,7 @@ class CategoriesTableViewIpadController: UITableViewController {
         }
         else
         {
-            let category: Category = dataSource![indexPath.row - 1]
+            let category: Category = dataSource[indexPath.row - 1]
             categoryCell.categoryLabel.text = (category.name == "Undefined") ? "Sin Categoría" : category.name
             categoryCell.categoryImage.image = UIImage(named: category.imageName!)
         }
@@ -124,7 +114,7 @@ class CategoriesTableViewIpadController: UITableViewController {
         {
             let navController: UINavigationController =  segue.destination as! UINavigationController
             let controller: AppsCollectionViewController = navController.viewControllers.first as! AppsCollectionViewController
-            controller.category = (indexPath!.row == 0) ? nil : self.dataSource![indexPath!.row - 1];
+            controller.category = (indexPath!.row == 0) ? nil : self.dataSource[indexPath!.row - 1];
         }
     }
 }

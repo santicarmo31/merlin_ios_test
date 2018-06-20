@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0270680377F2F5EF5D29DFEA /* Pods_Prueba_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530E9E4678824283C33423FC /* Pods_Prueba_iOS.framework */; };
+		9614D95620D999970014BE4C /* DatabaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D95520D999970014BE4C /* DatabaseProtocol.swift */; };
+		9614D95C20D99D730014BE4C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D95B20D99D730014BE4C /* RealmManager.swift */; };
+		9614D96420D9D27C0014BE4C /* RealmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D96320D9D27C0014BE4C /* RealmApp.swift */; };
+		9614D96820D9D3BF0014BE4C /* RealmCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D96720D9D3BF0014BE4C /* RealmCategory.swift */; };
+		9614D96F20D9F2830014BE4C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D96E20D9F2830014BE4C /* BaseService.swift */; };
+		9614D97520D9F69C0014BE4C /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D97420D9F69C0014BE4C /* AppService.swift */; };
+		9614D97720DA04E80014BE4C /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D97620DA04E80014BE4C /* NetworkHandler.swift */; };
+		9614D97920DA09B70014BE4C /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D97820DA09B70014BE4C /* AppPresenter.swift */; };
 		D7DEDA16203028D300B8934A /* CategoriesTableViewIpadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DEDA15203028D300B8934A /* CategoriesTableViewIpadController.swift */; };
 		DD3DD7B9A7E79C2705C6F0F6 /* Pods_Prueba_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC4204D63860C38933C7494 /* Pods_Prueba_iOSTests.framework */; };
 		E6BAC61C72B8B5584532FE15 /* Pods_Prueba_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B055BF33B6B25FD002F0C0CA /* Pods_Prueba_iOSUITests.framework */; };
@@ -26,8 +34,6 @@
 		F9787D2C1E651A9000778A4E /* AppsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9787D2B1E651A9000778A4E /* AppsTableViewController.swift */; };
 		F9787D2E1E651AA900778A4E /* AppsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9787D2D1E651AA900778A4E /* AppsCollectionViewController.swift */; };
 		F9787D301E651AFA00778A4E /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9787D2F1E651AFA00778A4E /* DetailTableViewController.swift */; };
-		F9787D321E651B1300778A4E /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9787D311E651B1300778A4E /* NetworkHandler.swift */; };
-		F9787D341E651B2000778A4E /* StoreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9787D331E651B2000778A4E /* StoreHandler.swift */; };
 		F9787D361E651B3000778A4E /* ImageCacheHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9787D351E651B3000778A4E /* ImageCacheHandler.swift */; };
 		F9787D381E651B6300778A4E /* UIViewController+ViewControllerShowing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9787D371E651B6300778A4E /* UIViewController+ViewControllerShowing.swift */; };
 		F9787D3F1E651F3800778A4E /* AGPushNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9787D3D1E651F3800778A4E /* AGPushNoteView.m */; };
@@ -59,6 +65,14 @@
 		1D6573827A1E249024A97C22 /* Pods-Prueba_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prueba_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Prueba_iOS/Pods-Prueba_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		42A1522905480100EB16E276 /* Pods-Prueba_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prueba_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Prueba_iOSUITests/Pods-Prueba_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		530E9E4678824283C33423FC /* Pods_Prueba_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prueba_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9614D95520D999970014BE4C /* DatabaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseProtocol.swift; sourceTree = "<group>"; };
+		9614D95B20D99D730014BE4C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		9614D96320D9D27C0014BE4C /* RealmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmApp.swift; sourceTree = "<group>"; };
+		9614D96720D9D3BF0014BE4C /* RealmCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCategory.swift; sourceTree = "<group>"; };
+		9614D96E20D9F2830014BE4C /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		9614D97420D9F69C0014BE4C /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
+		9614D97620DA04E80014BE4C /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		9614D97820DA09B70014BE4C /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
 		B055BF33B6B25FD002F0C0CA /* Pods_Prueba_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prueba_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7DEDA15203028D300B8934A /* CategoriesTableViewIpadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewIpadController.swift; sourceTree = "<group>"; };
 		D904E6F3B553CA16C46BEB20 /* Pods-Prueba_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prueba_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Prueba_iOSTests/Pods-Prueba_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,8 +98,6 @@
 		F9787D2B1E651A9000778A4E /* AppsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsTableViewController.swift; sourceTree = "<group>"; };
 		F9787D2D1E651AA900778A4E /* AppsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppsCollectionViewController.swift; sourceTree = "<group>"; };
 		F9787D2F1E651AFA00778A4E /* DetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
-		F9787D311E651B1300778A4E /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
-		F9787D331E651B2000778A4E /* StoreHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreHandler.swift; sourceTree = "<group>"; };
 		F9787D351E651B3000778A4E /* ImageCacheHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheHandler.swift; sourceTree = "<group>"; };
 		F9787D371E651B6300778A4E /* UIViewController+ViewControllerShowing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+ViewControllerShowing.swift"; sourceTree = "<group>"; };
 		F9787D3C1E651F3800778A4E /* AGPushNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPushNoteView.h; sourceTree = "<group>"; };
@@ -159,6 +171,68 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		9614D95320D9990B0014BE4C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9614D96220D9D2510014BE4C /* Adapters */,
+				9614D95D20D9AEAE0014BE4C /* Services */,
+				9614D95420D999770014BE4C /* Protocols */,
+				F9787D1D1E65199500778A4E /* Model */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		9614D95420D999770014BE4C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9614D95520D999970014BE4C /* DatabaseProtocol.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		9614D95D20D9AEAE0014BE4C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9614D96E20D9F2830014BE4C /* BaseService.swift */,
+				9614D97420D9F69C0014BE4C /* AppService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		9614D95E20D9AED90014BE4C /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				9614D97820DA09B70014BE4C /* AppPresenter.swift */,
+			);
+			name = Presenters;
+			sourceTree = "<group>";
+		};
+		9614D96220D9D2510014BE4C /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				9614D96520D9D2830014BE4C /* Realm */,
+			);
+			name = Adapters;
+			sourceTree = "<group>";
+		};
+		9614D96520D9D2830014BE4C /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				9614D95B20D99D730014BE4C /* RealmManager.swift */,
+				9614D96620D9D28D0014BE4C /* Models */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
+		9614D96620D9D28D0014BE4C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9614D96320D9D27C0014BE4C /* RealmApp.swift */,
+				9614D96720D9D3BF0014BE4C /* RealmCategory.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		F92120EC1E61DBCE0041DF8B = {
 			isa = PBXGroup;
 			children = (
@@ -184,9 +258,10 @@
 		F92120F71E61DBCF0041DF8B /* Prueba_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				9614D95E20D9AED90014BE4C /* Presenters */,
+				9614D95320D9990B0014BE4C /* Core */,
 				F92120F81E61DBCF0041DF8B /* AppDelegate.swift */,
 				F9787D1E1E65199E00778A4E /* Views */,
-				F9787D1D1E65199500778A4E /* Model */,
 				F9787D1C1E65198D00778A4E /* Controllers */,
 				F9787D1B1E65198100778A4E /* Handlers */,
 				F9787D1A1E65197700778A4E /* Helpers */,
@@ -237,9 +312,8 @@
 		F9787D1B1E65198100778A4E /* Handlers */ = {
 			isa = PBXGroup;
 			children = (
+				9614D97620DA04E80014BE4C /* NetworkHandler.swift */,
 				F9787D351E651B3000778A4E /* ImageCacheHandler.swift */,
-				F9787D311E651B1300778A4E /* NetworkHandler.swift */,
-				F9787D331E651B2000778A4E /* StoreHandler.swift */,
 			);
 			name = Handlers;
 			sourceTree = "<group>";
@@ -506,22 +580,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9787D3F1E651F3800778A4E /* AGPushNoteView.m in Sources */,
-				F9787D341E651B2000778A4E /* StoreHandler.swift in Sources */,
+				9614D97920DA09B70014BE4C /* AppPresenter.swift in Sources */,
 				F9787D441E661DD500778A4E /* UIViewController+BackButtonHandler.m in Sources */,
+				9614D96420D9D27C0014BE4C /* RealmApp.swift in Sources */,
 				F9787D301E651AFA00778A4E /* DetailTableViewController.swift in Sources */,
 				F9787D361E651B3000778A4E /* ImageCacheHandler.swift in Sources */,
 				F9787D381E651B6300778A4E /* UIViewController+ViewControllerShowing.swift in Sources */,
 				D7DEDA16203028D300B8934A /* CategoriesTableViewIpadController.swift in Sources */,
+				9614D97720DA04E80014BE4C /* NetworkHandler.swift in Sources */,
 				F9787D2C1E651A9000778A4E /* AppsTableViewController.swift in Sources */,
+				9614D97520D9F69C0014BE4C /* AppService.swift in Sources */,
+				9614D95620D999970014BE4C /* DatabaseProtocol.swift in Sources */,
 				F9787D221E651A1900778A4E /* AppTableViewCell.swift in Sources */,
 				F92120F91E61DBCF0041DF8B /* AppDelegate.swift in Sources */,
+				9614D95C20D99D730014BE4C /* RealmManager.swift in Sources */,
 				F9787D261E651A4F00778A4E /* App.swift in Sources */,
 				F9787D2A1E651A7F00778A4E /* CategoriesTableViewController.swift in Sources */,
 				F9787D2E1E651AA900778A4E /* AppsCollectionViewController.swift in Sources */,
+				9614D96820D9D3BF0014BE4C /* RealmCategory.swift in Sources */,
 				F9787D201E651A0800778A4E /* CategoryTableViewCell.swift in Sources */,
 				F9787D241E651A3200778A4E /* AppCollectionViewCell.swift in Sources */,
 				F9787D281E651A5900778A4E /* Category.swift in Sources */,
-				F9787D321E651B1300778A4E /* NetworkHandler.swift in Sources */,
+				9614D96F20D9F2830014BE4C /* BaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
