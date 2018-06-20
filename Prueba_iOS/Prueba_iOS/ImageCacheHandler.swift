@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ImageCacheHandler: NSObject {
+class ImageCacheHandler: NSObject {        
 
-    func imageNameFrom(_ url: String?) -> String?{
+    func imageNameFrom(_ url: String?) -> String? {
         
-        if let url = url
-        {
+        if let url = url {
             let urlSeparated: Array<String> = url.components(separatedBy: "/")
             return urlSeparated.last;
         }
@@ -25,39 +24,34 @@ class ImageCacheHandler: NSObject {
         
         let tmpFolderUrl: URL = URL.init(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
         
-        if let imageName = self.imageNameFrom(url)
-        {
+        if let imageName = self.imageNameFrom(url) {
             let imageUrl: URL = tmpFolderUrl.appendingPathComponent(imageName)
             
-            if let cacheImage = UIImage(contentsOfFile: imageUrl.path)
-            {
-                block(cacheImage); return
+            if let cacheImage = UIImage(contentsOfFile: imageUrl.path) {
+                block(cacheImage)
+                return
             }
-                
+            
             let sesion: URLSession = URLSession(configuration: URLSessionConfiguration.default)
             let set: CharacterSet = CharacterSet.urlQueryAllowed
             let imageNameEncoded: String = url!.addingPercentEncoding(withAllowedCharacters: set)!
             let imageServerUrl: URL? = URL(string: imageNameEncoded)
             
-            if let imageServerUrl = imageServerUrl
-            {
+            if let imageServerUrl = imageServerUrl {
                 let task: URLSessionDataTask = sesion.dataTask(with: imageServerUrl) { (data, urlResponse, error) in
- 
                     try! data!.write(to: imageUrl)
                     let imageToCache = UIImage(data: data!)
-                    block(imageToCache)
-                };
+                    
+                    DispatchQueue.main.async {
+                        block(imageToCache)
+                    }
+                }
                 
-                task.resume();
-            }
-            else
-            {
-                block(nil)
+                task.resume()
+                return
             }
         }
-        else
-        {
-            block(nil)
-        }
+        
+        block(nil)
     }
 }

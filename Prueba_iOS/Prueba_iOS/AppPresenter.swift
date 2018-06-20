@@ -8,15 +8,15 @@
 
 import Foundation
 
-protocol AppView: class {
+protocol AppView: BaseView {
     func list(categories: [Category])
     func list(apps: [App])
-    func dataLoaded()
+    func showEmptyCategories(message: String)
 }
 
 class AppPresenter {
     unowned var view: AppView
-    private let service: AppService // In the future we can change this service from SQL, FireBase or whatever
+    private let service: AppService
     
     
     init(view: AppView, service: AppService = AppService()) {
@@ -25,15 +25,23 @@ class AppPresenter {
     }
     
     func loadData() {
-        self.service.loadApps { (response) in
+        view.startSpinner()
+        service.loadApps { [weak self] (response) in
+            self?.view.stopSpinner()
             if case .success = response {
-                self.showCategories()
+                self?.showCategories()
             }
         }        
     }
     
     func showCategories() {
-        view.list(categories: service.loadCategoriesFromCache())
+        let categories = service.loadCategoriesFromCache()
+        let areCategoriesEmpty = categories.count == 0
+        if areCategoriesEmpty {
+            view.showEmptyCategories(message: "No hay categorias en el momento.")
+        } else {
+            view.list(categories: service.loadCategoriesFromCache())
+        }
     }
     
     func showAppsForCategory(name: String) {

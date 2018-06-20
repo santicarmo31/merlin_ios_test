@@ -7,6 +7,13 @@
 //
 
 import Foundation
+import AFNetworking
+
+enum ServiceResponse<Model> {
+    case success(response: [Model])
+    case failure(error: Error?)    
+}
+
 
 class BaseService<Model> {
     
@@ -19,5 +26,4 @@ class BaseService<Model> {
     func parse(response _: AnyObject) -> [Model]? {
         return nil
     }
-    
 }

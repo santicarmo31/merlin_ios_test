@@ -8,28 +8,25 @@
 
 import Foundation
 
-enum ServiceResponse<Model> {
-    case success(response: [Model])
-    case failure(error: Error?)
-    case notConnectedToInternet
-}
 
 class AppService: BaseService<App> {
+    
+    // MARK: - Vars & Constants
+    
     let endpoint = "https://www.reddit.com/reddits.json"
+    
+    // MARK: - Methods
     
     func loadApps(completion: @escaping (ServiceResponse<App>) -> Void) {
         request(endpoint: endpoint) { [weak self] (dict, error) in
-            guard let dict = dict else {
-                completion(ServiceResponse.failure(error: error))
-                print("There was an issue calling endpoint: \(self?.endpoint ?? "")")
-                return
-            }
-            
             DispatchQueue.main.async {
-                self?.createLocalDataBaseWith(dict)
-                completion(.success(response: self?.loadAppsFromCache() ?? []))
-            }
-            
+                guard let dict = dict else {
+                    completion(ServiceResponse.failure(error: error))                    
+                    return
+                }
+                let apps = self?.createLocalDataBaseWith(dict)
+                completion(.success(response: apps ?? []))
+            }            
         }
     }
     
@@ -71,7 +68,7 @@ extension AppService {
         return imageName
     }
     
-    func createLocalDataBaseWith(_ json: Dictionary<String, Any>) -> Void {
+    func createLocalDataBaseWith(_ json: Dictionary<String, Any>) -> [App] {
         
         var apps: [App] = Array()
         
@@ -89,6 +86,7 @@ extension AppService {
             apps.append(newApp)
         }
         
+        return apps
     }
     
     private func parseApp(fromJson json: Dictionary<String, Any>) -> RealmApp {

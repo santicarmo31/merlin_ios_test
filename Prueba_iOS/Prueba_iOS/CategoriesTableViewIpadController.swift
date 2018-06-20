@@ -9,113 +9,30 @@
 import UIKit
 import AFNetworking
 
-class CategoriesTableViewIpadController: UITableViewController {
-    
-    var dataSource: [Category] = Array()
-//    var presenter: CategoriesPresenter
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        let loadObjects = { () -> Void in
-            
-            self.dataSource = RealmManager.shared.all(for: RealmCategory.self)
-            self.tableView.reloadData()
-        }
-        
-//        let createDatabase = { () -> Void in
-//
-//            let networkHandler: NetworkHandler = NetworkHandler()
-//            networkHandler.jSonWith("https://www.reddit.com/reddits.json", andReturn: { (dic, error) in
-//
-//                if error == nil
-//                {
-//                    let storeHandler: StoreHandler = StoreHandler()
-//                    storeHandler.createLocalDataBaseWith(dic!)
-//                    loadObjects()
-//                }
-//            });
-//        }
-        
-        let manager: AFNetworkReachabilityManager = AFNetworkReachabilityManager.shared()
-        manager.setReachabilityStatusChange { (status) in
-            
-            if status == AFNetworkReachabilityStatus.notReachable
-            {
-                let message: AGPushNote = AGPushNote()
-                message.setDefaultUI()
-                message.message = "Funcionando en modo Offline"
-                message.iconImage = UIImage(named: "no_wifi")
-                message.showAtBottom = true
-                
-                AGPushNoteView.showNotification(message)
-                AGPushNoteView.setCloseAction({})
-                AGPushNoteView.setMessageAction({ (pushNote) in })
-                loadObjects()
-            }
-            else
-            {
-                AGPushNoteView.close(completion: {})
-//                createDatabase()
-            }
-        };
-        
-        manager.startMonitoring()
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
-        
-        return 67.0;
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return dataSource.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+protocol IpadCategorySelectionDelegate: class {
+    func categorySelected(_ category: Category?)
+}
 
-        let cell: CategoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-        return cell
-    }
+class CategoriesTableViewIpadController: CategoriesTableViewController {
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
-        
-        let categoryCell: CategoryTableViewCell = cell as! CategoryTableViewCell
-        
-        if (indexPath.row == 0)
-        {
-            categoryCell.categoryLabel.text = "Mostrar todo"
-            categoryCell.categoryImage.image = UIImage(named: "all_ipad_image")
-        }
-        else
-        {
-            let category: Category = dataSource[indexPath.row - 1]
-            categoryCell.categoryLabel.text = (category.name == "Undefined") ? "Sin Categoría" : category.name
-            categoryCell.categoryImage.image = UIImage(named: category.imageName!)
-        }
-    }
+    // MARK: - Vars & Constants
     
+    weak var categorySelectionDelegate: IpadCategorySelectionDelegate?
     
-    // MARK: - Navigation
+    // MARK: - Life Cycle
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let indexPath: IndexPath? = self.tableView.indexPathForSelectedRow;
-        
-        if (segue.identifier == "ShowApp")
-        {
-            let navController: UINavigationController =  segue.destination as! UINavigationController
-            let controller: AppsCollectionViewController = navController.viewControllers.first as! AppsCollectionViewController
-            controller.category = (indexPath!.row == 0) ? nil : self.dataSource[indexPath!.row - 1];
-        }
+    }
+}
+
+// MARK: - Table view delegate
+
+extension CategoriesTableViewIpadController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let didSelectShowAllRow = indexPath.row == 0
+        let categorySelected = didSelectShowAllRow ? nil : self.dataSource[indexPath.row - 1]
+        categorySelectionDelegate?.categorySelected(categorySelected)
     }
 }
 

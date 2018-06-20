@@ -29,31 +29,13 @@ class DetailTableViewController: UITableViewController {
         self.appTitle.text = self.app?.title;
         self.appDescription.text = self.app?.summitText;
         
-        var imageUlr: String?
+        let rawImageURL: String? = self.app?.bannerImg ?? self.app?.iconImg
+        let placeHolderImage = UIImage(named: "no_image_black")
         
-        if let bannerImg = self.app!.bannerImg
-        {
-            imageUlr = bannerImg
-        }
-        else if let iconImg = self.app!.iconImg
-        {
-            imageUlr = iconImg
-        }
-        
-        ImageCacheHandler().imageForUrl(imageUlr) { (image) in
-            DispatchQueue.main.async {
-                                
-                if image == nil
-                {
-                    self.appImage.image = UIImage(named: "no_image_black")
-                }
-                else
-                {
-                    self.appImage.image = image
-                }
-                
-                self.tableView.reloadData()
-            }
+        if let imageURL = rawImageURL, let url = URL(string: imageURL) {
+            appImage.setImageWith(url, placeholderImage: placeHolderImage)
+        } else {
+            appImage.image = placeHolderImage
         }
     }
 
@@ -62,8 +44,7 @@ class DetailTableViewController: UITableViewController {
         
     }
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        super.didReceiveMemoryWarning()        
     }
 
     @IBAction func dismissController(_ sender: Any) {

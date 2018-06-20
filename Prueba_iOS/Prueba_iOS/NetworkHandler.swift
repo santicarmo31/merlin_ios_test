@@ -19,10 +19,19 @@ class NetworkHandler: NSObject {
         
         let task: URLSessionDataTask = sesion.dataTask(with: url) { (data, urlResponse, error) in
             
+            if let error = error {                
+                block(nil, error)
+                return
+            }
+            
             do
             {
-                let jsonDic: Any = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers)
-                block(jsonDic as? Dictionary<String, Any>, nil);
+                if let data = data {
+                    let jsonDic: Any = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+                    block(jsonDic as? Dictionary<String, Any>, nil);
+                } else {
+                    block(nil, nil)
+                }
             }
             catch
             {

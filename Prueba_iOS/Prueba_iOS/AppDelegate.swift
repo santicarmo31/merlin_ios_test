@@ -16,9 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        if let splitViewController = window?.rootViewController as? UISplitViewController
-        {
-            splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.primaryOverlay //TODO: This line is intenter to be erased by the developer
+        // Let's configure iPad views.
+        if let splitViewController = window?.rootViewController as? UISplitViewController {
+            let leftNavController = splitViewController.viewControllers.first as? UINavigationController
+            let masterViewController = leftNavController?.topViewController as? CategoriesTableViewIpadController
+            let detailViewController = splitViewController.viewControllers.last as? UINavigationController
+            masterViewController?.categorySelectionDelegate = detailViewController?.viewControllers.first as? AppsCollectionViewController
         }
 
         return true
@@ -65,7 +68,7 @@ extension AppDelegate: UISplitViewControllerDelegate {
     // Collapse the secondary view controller onto the primary view controller.
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
         
-        return true
+        return false
     }
 }
 
