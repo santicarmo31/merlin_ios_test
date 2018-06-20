@@ -36,6 +36,10 @@ class AppPresenter {
         view.list(categories: service.loadCategoriesFromCache())
     }
     
+    func showAppsForCategory(name: String) {
+        view.list(apps: service.loadAppsWithCategoryName(name))
+    }
+    
     func showApps() {
         view.list(apps: service.loadAppsFromCache())
     }

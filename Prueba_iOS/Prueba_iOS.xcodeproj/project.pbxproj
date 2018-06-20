@@ -177,7 +177,6 @@
 				9614D96220D9D2510014BE4C /* Adapters */,
 				9614D95D20D9AEAE0014BE4C /* Services */,
 				9614D95420D999770014BE4C /* Protocols */,
-				F9787D1D1E65199500778A4E /* Model */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -233,6 +232,45 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		9614D97C20DA14D90014BE4C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F9787D191E65196F00778A4E /* 3rd party */,
+				F9787D1B1E65198100778A4E /* Handlers */,
+				F9787D1A1E65197700778A4E /* Helpers */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		96D2EC3D20DA159700590F70 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F9787D291E651A7F00778A4E /* CategoriesTableViewController.swift */,
+				D7DEDA15203028D300B8934A /* CategoriesTableViewIpadController.swift */,
+				F9787D1F1E651A0800778A4E /* CategoryTableViewCell.swift */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		96D2EC3E20DA15AB00590F70 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				F9787D211E651A1900778A4E /* AppTableViewCell.swift */,
+				F9787D2B1E651A9000778A4E /* AppsTableViewController.swift */,
+				F9787D2D1E651AA900778A4E /* AppsCollectionViewController.swift */,
+				F9787D231E651A3200778A4E /* AppCollectionViewCell.swift */,
+			);
+			name = Apps;
+			sourceTree = "<group>";
+		};
+		96D2EC3F20DA15BB00590F70 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				F9787D2F1E651AFA00778A4E /* DetailTableViewController.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		F92120EC1E61DBCE0041DF8B = {
 			isa = PBXGroup;
 			children = (
@@ -258,14 +296,12 @@
 		F92120F71E61DBCF0041DF8B /* Prueba_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				F9787D1D1E65199500778A4E /* Models */,
+				9614D97C20DA14D90014BE4C /* Common */,
 				9614D95E20D9AED90014BE4C /* Presenters */,
 				9614D95320D9990B0014BE4C /* Core */,
 				F92120F81E61DBCF0041DF8B /* AppDelegate.swift */,
 				F9787D1E1E65199E00778A4E /* Views */,
-				F9787D1C1E65198D00778A4E /* Controllers */,
-				F9787D1B1E65198100778A4E /* Handlers */,
-				F9787D1A1E65197700778A4E /* Helpers */,
-				F9787D191E65196F00778A4E /* 3rd party */,
 				F92120FF1E61DBD00041DF8B /* Assets.xcassets */,
 				F92121041E61DBD00041DF8B /* Info.plist */,
 				F9787D411E65203900778A4E /* PruebaiOS-Bridging-Header.h */,
@@ -318,34 +354,22 @@
 			name = Handlers;
 			sourceTree = "<group>";
 		};
-		F9787D1C1E65198D00778A4E /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				F9787D291E651A7F00778A4E /* CategoriesTableViewController.swift */,
-				F9787D2B1E651A9000778A4E /* AppsTableViewController.swift */,
-				F9787D2D1E651AA900778A4E /* AppsCollectionViewController.swift */,
-				F9787D2F1E651AFA00778A4E /* DetailTableViewController.swift */,
-				D7DEDA15203028D300B8934A /* CategoriesTableViewIpadController.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		F9787D1D1E65199500778A4E /* Model */ = {
+		F9787D1D1E65199500778A4E /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F9787D251E651A4F00778A4E /* App.swift */,
 				F9787D271E651A5900778A4E /* Category.swift */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 		F9787D1E1E65199E00778A4E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				96D2EC3F20DA15BB00590F70 /* Detail */,
+				96D2EC3E20DA15AB00590F70 /* Apps */,
+				96D2EC3D20DA159700590F70 /* Categories */,
 				9614D95220D969AE0014BE4C /* Storyboards */,
-				F9787D1F1E651A0800778A4E /* CategoryTableViewCell.swift */,
-				F9787D211E651A1900778A4E /* AppTableViewCell.swift */,
-				F9787D231E651A3200778A4E /* AppCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";

@@ -33,6 +33,11 @@ class AppService: BaseService<App> {
         }
     }
     
+    func loadAppsWithCategoryName(_ name: String) -> [App] {
+        let pred: NSPredicate = NSPredicate(format: "r_category.r_name = %@", name)
+        return RealmManager.shared.all(for: RealmApp.self, predicate: pred)
+    }
+    
     func loadAppsFromCache() -> [App] {
         return RealmManager.shared.all(for: RealmApp.self)
     }

@@ -13,22 +13,16 @@ class AppsTableViewController: UITableViewController {
     var dataSource: [App] = Array()
     var imageHandler: ImageCacheHandler = ImageCacheHandler()
     var category: Category?
+    var presenter: AppPresenter!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        if (self.category != nil)
-        {
-            let pred: NSPredicate = NSPredicate(format: "r_category.r_name = %@", self.category!.name!)
-            self.dataSource =  RealmManager.shared.all(for: RealmApp.self, predicate: pred)
+        setupPresenter()
+        if let categoryName = category?.name {
+            presenter.showAppsForCategory(name: categoryName)
+        } else {
+            presenter.showApps()
         }
-        else
-        {
-            self.dataSource =  RealmManager.shared.all(for: RealmApp.self)
-        }
-        
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,4 +91,23 @@ class AppsTableViewController: UITableViewController {
         let controller: DetailTableViewController = segue.destination as! DetailTableViewController
         controller.app = self.dataSource[indexPath!.row];
     }
+    
+    private func setupPresenter() {
+        presenter = AppPresenter(view: self)
+    }
+}
+
+extension AppsTableViewController: AppView {
+    func list(categories: [Category]) { }
+    
+    func list(apps: [App]) {
+        dataSource = apps
+        tableView.reloadData()
+    }
+    
+    func dataLoaded() {
+        print("Cargue la data")
+    }
+    
+    
 }
