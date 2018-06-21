@@ -140,6 +140,9 @@ extension AppsCollectionViewController: IpadCategorySelectionDelegate {
 // MARK: - AppView Conformance
 
 extension AppsCollectionViewController: AppView {
+    func showEmptyApps(message: String) {        
+    }
+    
     func showEmptyCategories(message: String) {}
     
     func list(categories: [Category]) { }

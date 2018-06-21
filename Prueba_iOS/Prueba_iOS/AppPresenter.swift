@@ -12,9 +12,14 @@ protocol AppView: BaseView {
     func list(categories: [Category])
     func list(apps: [App])
     func showEmptyCategories(message: String)
+    func showEmptyApps(message: String)
 }
 
 class AppPresenter {
+    
+    let emptyAppsMessage = "No hay aplicaciones en el momento."
+    let emptyAppsForCategoryMessage = "No hay aplicaciones para la categoria %@"
+    
     unowned var view: AppView
     private let service: AppService
     
@@ -43,11 +48,23 @@ class AppPresenter {
     }
     
     func showAppsForCategory(name: String) {
-        view.list(apps: service.loadAppsWithCategoryNameFromCache(name))
+        let apps = service.loadAppsWithCategoryNameFromCache(name)
+        let areAppsEmpty = apps.count == 0
+        if areAppsEmpty {
+            view.showEmptyApps(message: String(format: emptyAppsForCategoryMessage, name))
+        } else {
+            view.list(apps: apps)
+        }
     }
     
     func showApps() {
-        view.list(apps: service.loadAppsFromCache())
+        let apps = service.loadAppsFromCache()
+        let areAppsEmpty = apps.count == 0
+        if areAppsEmpty {
+            view.showEmptyApps(message: emptyAppsMessage)
+        } else {
+            view.list(apps: apps)
+        }
     }
     
 }

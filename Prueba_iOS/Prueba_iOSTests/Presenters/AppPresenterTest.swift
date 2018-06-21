@@ -17,25 +17,52 @@ class AppPresenterTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let apps = UtilsTest.getMockApps()
-        mockAppService = MockAppService(apps: apps)
+        mockAppService = MockAppService()
+        appPresenterTest = AppPresenter(view: mockAppView, service: mockAppService)
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testShouldListCategories() {
+        appPresenterTest.showCategories()
+        XCTAssert(mockAppView.listCategoriesCalled, "list categories hasn't been called in view")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testShouldListApps() {
+        appPresenterTest.showApps()
+        XCTAssert(mockAppView.listAppsCalled, "list apps hasn't been called in view")
+    }
+        
+    
+    func testShouldListAppsForCategory() {
+        appPresenterTest.showAppsForCategory(name: "Mock0")
+        XCTAssert(mockAppView.listAppsCalled, "list apps hasn't been called in view")
+    }
+    
+    func testShouldShowEmptyCategoriesMessage() {
+        mockAppService.apps = []
+        appPresenterTest.showCategories()
+        XCTAssert(mockAppView.showEmptyCategoriesCalled, "showEmptyCategories hasn't been called in view")
+    }
+    
+    func testShouldShowAppsForCategoryEmptyMessage() {
+        let categoryName = "O"
+        let expectedAppsForCategoryEmptyMessage = String(format: appPresenterTest.emptyAppsForCategoryMessage, categoryName)
+        
+        appPresenterTest.showAppsForCategory(name: categoryName)
+        XCTAssert(mockAppView.showEmptyAppsCalled, "showEmptyApps hasn't been called in view")
+        XCTAssertEqual(mockAppView.emptyAppsMessage, expectedAppsForCategoryEmptyMessage, "emptyMessage should be: \(expectedAppsForCategoryEmptyMessage)")
+    }
+    
+    func testShouldShowAppsEmptyMessage() {
+        let expectedShowAppEmptyMessage = appPresenterTest.emptyAppsMessage
+        mockAppService.apps = []
+        appPresenterTest.showApps()
+        
+        XCTAssert(mockAppView.showEmptyAppsCalled, "showEmptyApps hasn't been called in view")
+        XCTAssertEqual(mockAppView.emptyAppsMessage, expectedShowAppEmptyMessage, "emptyMessage should be: \(expectedShowAppEmptyMessage)")
     }
     
 }

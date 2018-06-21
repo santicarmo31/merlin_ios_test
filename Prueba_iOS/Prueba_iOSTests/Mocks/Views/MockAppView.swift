@@ -15,8 +15,11 @@ class MockAppView: AppView {
     var listCategoriesCalled = false
     var listAppsCalled = false
     var showEmptyCategoriesCalled = false
+    var showEmptyAppsCalled = false
     var startSpinnerCalled = false
     var stopSpinnerCalled = false
+    
+    var emptyAppsMessage: String?
     
     init() {
     }
@@ -31,6 +34,11 @@ class MockAppView: AppView {
     
     func showEmptyCategories(message: String) {
         showEmptyCategoriesCalled = true
+    }
+    
+    func showEmptyApps(message: String) {
+        showEmptyAppsCalled = true
+        emptyAppsMessage = message
     }
     
     func startSpinner() {

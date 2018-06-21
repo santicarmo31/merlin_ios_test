@@ -187,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				960E85B020DB4E660088FE18 /* AppPresenterTest.swift */,
-				960E85B920DB531C0088FE18 /* UtilsTest.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -402,6 +401,7 @@
 				960E85B220DB4E9A0088FE18 /* Mocks */,
 				960E85AF20DB4E3E0088FE18 /* Presenters */,
 				F921210D1E61DBD20041DF8B /* Prueba_iOSTests.swift */,
+				960E85B920DB531C0088FE18 /* UtilsTest.swift */,
 				F921210F1E61DBD20041DF8B /* Info.plist */,
 			);
 			path = Prueba_iOSTests;

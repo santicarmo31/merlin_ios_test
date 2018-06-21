@@ -9,10 +9,7 @@
 @testable import Prueba_iOS
 import Foundation
 
-class UtilsTest {
-    static func getMockApps() -> [App] {
-        return AppService().parse(loadJsonFile(json: "Apps"))
-    }
+class UtilsTest {   
     
     static func loadJsonFile(json: String) -> [String: AnyObject] {
         var data = Data()

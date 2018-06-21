@@ -14,7 +14,7 @@ class AppService: BaseService<App> {
     // MARK: - Vars & Constants
     
     private let endpoint = "https://www.reddit.com/reddits.json"
-    fileprivate let cacheService = AppCacheService()
+    fileprivate let cacheService: Cache = AppCacheService()
     
     // MARK: - Methods
     
@@ -40,7 +40,7 @@ class AppService: BaseService<App> {
     }
     
     func loadCategoriesFromCache() -> [Category] {
-        return cacheService.categoryObjects()
+        return (cacheService as! AppCacheService).categoryObjects()
     }
 }
 

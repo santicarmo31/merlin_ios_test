@@ -104,6 +104,9 @@ extension CategoriesTableViewController {
 // MARK: - AppView Conformance
 
 extension CategoriesTableViewController: AppView {
+    func showEmptyApps(message: String) {        
+    }
+    
     
     func showEmptyCategories(message: String) {
         
