@@ -28,9 +28,7 @@ class AppPresenter {
         view.startSpinner()
         service.loadApps { [weak self] (response) in
             self?.view.stopSpinner()
-            if case .success = response {
-                self?.showCategories()
-            }
+            self?.showCategories()
         }        
     }
     
@@ -45,7 +43,7 @@ class AppPresenter {
     }
     
     func showAppsForCategory(name: String) {
-        view.list(apps: service.loadAppsWithCategoryName(name))
+        view.list(apps: service.loadAppsWithCategoryNameFromCache(name))
     }
     
     func showApps() {

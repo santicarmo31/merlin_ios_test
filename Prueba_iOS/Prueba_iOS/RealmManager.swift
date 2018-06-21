@@ -34,16 +34,20 @@ final class RealmManager {
     }
     
     public func add(objects: Object..., update: Bool = true) {
+        add(objects: objects)
+    }
+    
+    public func add(objects: [Object], update: Bool = true) {
         for object in objects {
             add(object: object, update: update)
         }
     }
     
-    public func all<Model: Object>(for type: Model.Type, predicate: NSPredicate? = nil) -> [Model] {
+    public func all<Model: Object>(for type: Model.Type, predicate: String? = nil, _ args: Any...) -> [Model] {
         let objects = context.objects(type)
         
-        if let predicate = predicate {
-            return Array(objects.filter(predicate))
+        if let predicateFormat = predicate {
+            return Array(objects.filter(predicateFormat, args))
         }
         
         return Array(objects)

@@ -39,8 +39,12 @@ class ImageCacheHandler: NSObject {
             
             if let imageServerUrl = imageServerUrl {
                 let task: URLSessionDataTask = sesion.dataTask(with: imageServerUrl) { (data, urlResponse, error) in
-                    try! data!.write(to: imageUrl)
-                    let imageToCache = UIImage(data: data!)
+                    guard let data = data else {
+                        block(nil)
+                        return
+                    }
+                    try! data.write(to: imageUrl)
+                    let imageToCache = UIImage(data: data)
                     
                     DispatchQueue.main.async {
                         block(imageToCache)

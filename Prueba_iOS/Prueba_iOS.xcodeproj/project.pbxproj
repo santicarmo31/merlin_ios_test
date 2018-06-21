@@ -12,6 +12,13 @@
 		960E85A220DAA8680088FE18 /* UIImageView+ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85A120DAA8680088FE18 /* UIImageView+ImageHandler.swift */; };
 		960E85A420DABF160088FE18 /* UIViewController+NetworkReachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85A320DABF160088FE18 /* UIViewController+NetworkReachable.swift */; };
 		960E85A620DADB100088FE18 /* CategoriesTableViewIpadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85A520DADB100088FE18 /* CategoriesTableViewIpadController.swift */; };
+		960E85B120DB4E660088FE18 /* AppPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85B020DB4E660088FE18 /* AppPresenterTest.swift */; };
+		960E85B520DB4EB20088FE18 /* MockAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85B420DB4EB20088FE18 /* MockAppView.swift */; };
+		960E85B820DB4FAE0088FE18 /* MockAppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85B720DB4FAE0088FE18 /* MockAppService.swift */; };
+		960E85BA20DB531C0088FE18 /* UtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85B920DB531C0088FE18 /* UtilsTest.swift */; };
+		960E85BD20DB541F0088FE18 /* Apps.json in Resources */ = {isa = PBXBuildFile; fileRef = 960E85BC20DB541F0088FE18 /* Apps.json */; };
+		960E85BF20DB56F50088FE18 /* AppCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85BE20DB56F50088FE18 /* AppCacheService.swift */; };
+		960E85C220DB610B0088FE18 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85C120DB610B0088FE18 /* Cache.swift */; };
 		9614D95C20D99D730014BE4C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D95B20D99D730014BE4C /* RealmManager.swift */; };
 		9614D96420D9D27C0014BE4C /* RealmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D96320D9D27C0014BE4C /* RealmApp.swift */; };
 		9614D96820D9D3BF0014BE4C /* RealmCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D96720D9D3BF0014BE4C /* RealmCategory.swift */; };
@@ -73,6 +80,13 @@
 		960E85A120DAA8680088FE18 /* UIImageView+ImageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+ImageHandler.swift"; sourceTree = "<group>"; };
 		960E85A320DABF160088FE18 /* UIViewController+NetworkReachable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NetworkReachable.swift"; sourceTree = "<group>"; };
 		960E85A520DADB100088FE18 /* CategoriesTableViewIpadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewIpadController.swift; sourceTree = "<group>"; };
+		960E85B020DB4E660088FE18 /* AppPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenterTest.swift; sourceTree = "<group>"; };
+		960E85B420DB4EB20088FE18 /* MockAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppView.swift; sourceTree = "<group>"; };
+		960E85B720DB4FAE0088FE18 /* MockAppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppService.swift; sourceTree = "<group>"; };
+		960E85B920DB531C0088FE18 /* UtilsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsTest.swift; sourceTree = "<group>"; };
+		960E85BC20DB541F0088FE18 /* Apps.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Apps.json; sourceTree = "<group>"; };
+		960E85BE20DB56F50088FE18 /* AppCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCacheService.swift; sourceTree = "<group>"; };
+		960E85C120DB610B0088FE18 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		9614D95B20D99D730014BE4C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9614D96320D9D27C0014BE4C /* RealmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmApp.swift; sourceTree = "<group>"; };
 		9614D96720D9D3BF0014BE4C /* RealmCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCategory.swift; sourceTree = "<group>"; };
@@ -169,6 +183,57 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		960E85AF20DB4E3E0088FE18 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				960E85B020DB4E660088FE18 /* AppPresenterTest.swift */,
+				960E85B920DB531C0088FE18 /* UtilsTest.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		960E85B220DB4E9A0088FE18 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				960E85BB20DB53F50088FE18 /* JSON */,
+				960E85B620DB4FA50088FE18 /* Service */,
+				960E85B320DB4EA10088FE18 /* Views */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		960E85B320DB4EA10088FE18 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				960E85B420DB4EB20088FE18 /* MockAppView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		960E85B620DB4FA50088FE18 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				960E85B720DB4FAE0088FE18 /* MockAppService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		960E85BB20DB53F50088FE18 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				960E85BC20DB541F0088FE18 /* Apps.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		960E85C020DB56FA0088FE18 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				960E85BE20DB56F50088FE18 /* AppCacheService.swift */,
+			);
+			name = Cache;
+			sourceTree = "<group>";
+		};
 		9614D95220D969AE0014BE4C /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				964F76F520DAA4D000CF0F06 /* BaseView.swift */,
+				960E85C120DB610B0088FE18 /* Cache.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -199,6 +265,7 @@
 		9614D95D20D9AEAE0014BE4C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				960E85C020DB56FA0088FE18 /* Cache */,
 				9614D96E20D9F2830014BE4C /* BaseService.swift */,
 				9614D97420D9F69C0014BE4C /* AppService.swift */,
 			);
@@ -332,6 +399,8 @@
 		F921210C1E61DBD20041DF8B /* Prueba_iOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				960E85B220DB4E9A0088FE18 /* Mocks */,
+				960E85AF20DB4E3E0088FE18 /* Presenters */,
 				F921210D1E61DBD20041DF8B /* Prueba_iOSTests.swift */,
 				F921210F1E61DBD20041DF8B /* Info.plist */,
 			);
@@ -527,6 +596,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				960E85BD20DB541F0088FE18 /* Apps.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,11 +715,13 @@
 				9614D96820D9D3BF0014BE4C /* RealmCategory.swift in Sources */,
 				960E85A620DADB100088FE18 /* CategoriesTableViewIpadController.swift in Sources */,
 				F9787D201E651A0800778A4E /* CategoryTableViewCell.swift in Sources */,
+				960E85BF20DB56F50088FE18 /* AppCacheService.swift in Sources */,
 				F9787D241E651A3200778A4E /* AppCollectionViewCell.swift in Sources */,
 				960E85A020DAA5680088FE18 /* UIViewController+BaseView.swift in Sources */,
 				964F76F420DA9D3B00CF0F06 /* UIViewController+ActivityIndicator.swift in Sources */,
 				F9787D281E651A5900778A4E /* Category.swift in Sources */,
 				9614D96F20D9F2830014BE4C /* BaseService.swift in Sources */,
+				960E85C220DB610B0088FE18 /* Cache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,7 +729,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				960E85B120DB4E660088FE18 /* AppPresenterTest.swift in Sources */,
 				F921210E1E61DBD20041DF8B /* Prueba_iOSTests.swift in Sources */,
+				960E85BA20DB531C0088FE18 /* UtilsTest.swift in Sources */,
+				960E85B520DB4EB20088FE18 /* MockAppView.swift in Sources */,
+				960E85B820DB4FAE0088FE18 /* MockAppService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

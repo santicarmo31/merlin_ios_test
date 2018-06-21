@@ -13,7 +13,8 @@ class AppService: BaseService<App> {
     
     // MARK: - Vars & Constants
     
-    let endpoint = "https://www.reddit.com/reddits.json"
+    private let endpoint = "https://www.reddit.com/reddits.json"
+    fileprivate let cacheService = AppCacheService()
     
     // MARK: - Methods
     
@@ -24,23 +25,22 @@ class AppService: BaseService<App> {
                     completion(ServiceResponse.failure(error: error))                    
                     return
                 }
-                let apps = self?.createLocalDataBaseWith(dict)
+                let apps = self?.parse(dict)
                 completion(.success(response: apps ?? []))
             }            
         }
     }
     
-    func loadAppsWithCategoryName(_ name: String) -> [App] {
-        let pred: NSPredicate = NSPredicate(format: "r_category.r_name = %@", name)
-        return RealmManager.shared.all(for: RealmApp.self, predicate: pred)
+    func loadAppsWithCategoryNameFromCache(_ name: String) -> [App] {
+        return cacheService.objects(predicateFormat: "r_category.r_name = '\(name)'") as! [App]
     }
     
     func loadAppsFromCache() -> [App] {
-        return RealmManager.shared.all(for: RealmApp.self)
+        return cacheService.objects() as! [App]
     }
     
     func loadCategoriesFromCache() -> [Category] {
-        return RealmManager.shared.all(for: RealmCategory.self)
+        return cacheService.categoryObjects()
     }
 }
 
@@ -68,11 +68,9 @@ extension AppService {
         return imageName
     }
     
-    func createLocalDataBaseWith(_ json: Dictionary<String, Any>) -> [App] {
+    func parse(_ json: Dictionary<String, Any>) -> [App] {
         
         var apps: [App] = Array()
-        
-        RealmManager.shared.clear()
         
         let data:       Dictionary<String, Any> = json["data"] as! Dictionary
         let children:   Array<Dictionary<String, Any>> = data["children"] as! Array
@@ -81,36 +79,36 @@ extension AppService {
         {
             let interestingData: Dictionary<String, Any> = child["data"] as! Dictionary
             let newApp = parseApp(fromJson: interestingData)
-            
-            RealmManager.shared.add(object: newApp)
             apps.append(newApp)
         }
+        
+        // Let's add apps to realm cache
+        cacheService.add(objects: apps)
         
         return apps
     }
     
-    private func parseApp(fromJson json: Dictionary<String, Any>) -> RealmApp {
-        let app = RealmApp()
-        
-        app.r_id = valueFor(json["id"])
-        app.r_title = valueFor(json["title"])
-        app.r_iconImg = valueFor(json["icon_img"])
-        app.r_displayText = valueFor(json["display_name"])
-        app.r_summitText = valueFor(json["submit_text"])
-        app.r_bannerImg = valueFor(json["banner_img"])
-        
-        let category: RealmCategory = parseCategory(fromJson: json)
-        app.r_category = category
+    private func parseApp(fromJson json: Dictionary<String, Any>) -> App {
+        let app = RawApp(
+            bannerImg: valueFor(json["banner_img"]),
+            _id: valueFor(json["id"]),
+            summitText: valueFor(json["submit_text"]),
+            displayText: valueFor(json["display_name"]),
+            title: valueFor(json["title"]),
+            iconImg:   valueFor(json["icon_img"]),
+            category: parseCategory(fromJson: json)
+        )
         
         return app
     }
     
-    private func parseCategory(fromJson json: Dictionary<String, Any>) -> RealmCategory {
+    private func parseCategory(fromJson json: Dictionary<String, Any>) -> Category {
         let name = valueFor(json["advertiser_category"]) ?? "Undefined"
-        let newCategory: RealmCategory = RealmCategory()
-        newCategory.r_id = name
-        newCategory.r_imageName = imageNameFrom(name)
-        newCategory.r_name = name
+        let newCategory = RawCategory(
+            _id: name,
+            name: name,
+            imageName: imageNameFrom(name)
+        )
         return newCategory
     }
     

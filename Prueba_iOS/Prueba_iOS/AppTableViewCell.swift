@@ -16,6 +16,8 @@ class AppTableViewCell: UITableViewCell {
     @IBOutlet var appTitle: UILabel!
     @IBOutlet var appDescription: UILabel!
     
+    var rawImageURL: String? = nil
+    
     // MARK: - Life Cycle
     
     override func awakeFromNib() {
@@ -33,15 +35,7 @@ class AppTableViewCell: UITableViewCell {
         appDescription.text = app.summitText
         accessoryType = UITableViewCellAccessoryType.disclosureIndicator
     
-        let rawImageURL: String? = app.iconImg ?? app.bannerImg
-//        let placeHolderImage = UIImage(named: "no_image_black")
-//
-//        if let imageURL = rawImageURL, let url = URL(string: imageURL) {
-//            appImage.setImageWith(url, placeholderImage: placeHolderImage)
-//        } else {
-//            appImage.image = placeHolderImage
-//        }
-        
+        rawImageURL = app.iconImg ?? app.bannerImg
         appImage.setImage(fromUrl: rawImageURL, placeHolderImageName: "no_image_black")
     }
 
