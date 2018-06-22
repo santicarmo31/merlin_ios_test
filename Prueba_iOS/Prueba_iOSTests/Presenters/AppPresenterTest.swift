@@ -17,7 +17,7 @@ class AppPresenterTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        mockAppService = MockAppService()
+        mockAppService = MockAppService(apps: mockApps)
         appPresenterTest = AppPresenter(view: mockAppView, service: mockAppService)
     }
     

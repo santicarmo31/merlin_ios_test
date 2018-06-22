@@ -14,7 +14,20 @@ class AppService: BaseService<App> {
     // MARK: - Vars & Constants
     
     private let endpoint = "https://www.reddit.com/reddits.json"
-    fileprivate let cacheService: Cache = AppCacheService()
+    fileprivate let cacheService: Cache
+    
+    // Life cycle
+    
+    init(cacheService: Cache = AppCacheService(), service: Service? = nil) {
+        self.cacheService = cacheService
+        
+        if let service = service {
+            super.init(service: service)
+        } else {
+            super.init()
+        }
+        
+    }
     
     // MARK: - Methods
     

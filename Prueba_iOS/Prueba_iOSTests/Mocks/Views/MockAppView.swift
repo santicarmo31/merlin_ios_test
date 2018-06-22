@@ -6,9 +6,8 @@
 //  Copyright © 2018 Humberto Cetina. All rights reserved.
 //
 
-
-@testable import Prueba_iOS
 import Foundation
+@testable import Prueba_iOS
 
 class MockAppView: AppView {
     

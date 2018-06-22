@@ -26,6 +26,10 @@
 		9614D97520D9F69C0014BE4C /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D97420D9F69C0014BE4C /* AppService.swift */; };
 		9614D97720DA04E80014BE4C /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D97620DA04E80014BE4C /* NetworkHandler.swift */; };
 		9614D97920DA09B70014BE4C /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D97820DA09B70014BE4C /* AppPresenter.swift */; };
+		962E6D4220DCA8A900764779 /* AppServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E6D4120DCA8A900764779 /* AppServiceTest.swift */; };
+		962E6D4420DCAE0300764779 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E6D4320DCAE0300764779 /* Service.swift */; };
+		962E6D4620DCB03500764779 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E6D4520DCB03500764779 /* MockService.swift */; };
+		962E6D4B20DCB96900764779 /* MockApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E6D4A20DCB96900764779 /* MockApps.swift */; };
 		964F76F420DA9D3B00CF0F06 /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F76F320DA9D3B00CF0F06 /* UIViewController+ActivityIndicator.swift */; };
 		964F76F620DAA4D000CF0F06 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F76F520DAA4D000CF0F06 /* BaseView.swift */; };
 		DD3DD7B9A7E79C2705C6F0F6 /* Pods_Prueba_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC4204D63860C38933C7494 /* Pods_Prueba_iOSTests.framework */; };
@@ -94,6 +98,10 @@
 		9614D97420D9F69C0014BE4C /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
 		9614D97620DA04E80014BE4C /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		9614D97820DA09B70014BE4C /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
+		962E6D4120DCA8A900764779 /* AppServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServiceTest.swift; sourceTree = "<group>"; };
+		962E6D4320DCAE0300764779 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		962E6D4520DCB03500764779 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		962E6D4A20DCB96900764779 /* MockApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApps.swift; sourceTree = "<group>"; };
 		964F76F320DA9D3B00CF0F06 /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
 		964F76F520DAA4D000CF0F06 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		B055BF33B6B25FD002F0C0CA /* Pods_Prueba_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prueba_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +205,7 @@
 				960E85BB20DB53F50088FE18 /* JSON */,
 				960E85B620DB4FA50088FE18 /* Service */,
 				960E85B320DB4EA10088FE18 /* Views */,
+				962E6D4A20DCB96900764779 /* MockApps.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -213,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				960E85B720DB4FAE0088FE18 /* MockAppService.swift */,
+				962E6D4520DCB03500764779 /* MockService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -257,6 +267,7 @@
 			children = (
 				964F76F520DAA4D000CF0F06 /* BaseView.swift */,
 				960E85C120DB610B0088FE18 /* Cache.swift */,
+				962E6D4320DCAE0300764779 /* Service.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -315,6 +326,14 @@
 				F9787D1A1E65197700778A4E /* Helpers */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		962E6D4020DCA88600764779 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				962E6D4120DCA8A900764779 /* AppServiceTest.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		964F76F220DA9D1F00CF0F06 /* Extensions */ = {
@@ -399,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				960E85B220DB4E9A0088FE18 /* Mocks */,
+				962E6D4020DCA88600764779 /* Services */,
 				960E85AF20DB4E3E0088FE18 /* Presenters */,
 				F921210D1E61DBD20041DF8B /* Prueba_iOSTests.swift */,
 				960E85B920DB531C0088FE18 /* UtilsTest.swift */,
@@ -710,6 +730,7 @@
 				F92120F91E61DBCF0041DF8B /* AppDelegate.swift in Sources */,
 				9614D95C20D99D730014BE4C /* RealmManager.swift in Sources */,
 				F9787D261E651A4F00778A4E /* App.swift in Sources */,
+				962E6D4420DCAE0300764779 /* Service.swift in Sources */,
 				F9787D2A1E651A7F00778A4E /* CategoriesTableViewController.swift in Sources */,
 				F9787D2E1E651AA900778A4E /* AppsCollectionViewController.swift in Sources */,
 				9614D96820D9D3BF0014BE4C /* RealmCategory.swift in Sources */,
@@ -730,10 +751,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				960E85B120DB4E660088FE18 /* AppPresenterTest.swift in Sources */,
+				962E6D4220DCA8A900764779 /* AppServiceTest.swift in Sources */,
+				962E6D4620DCB03500764779 /* MockService.swift in Sources */,
 				F921210E1E61DBD20041DF8B /* Prueba_iOSTests.swift in Sources */,
 				960E85BA20DB531C0088FE18 /* UtilsTest.swift in Sources */,
 				960E85B520DB4EB20088FE18 /* MockAppView.swift in Sources */,
 				960E85B820DB4FAE0088FE18 /* MockAppService.swift in Sources */,
+				962E6D4B20DCB96900764779 /* MockApps.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,19 +8,18 @@
 
 import UIKit
 
-class NetworkHandler: NSObject {
-
-    func jSonWith(_ url: String, andReturn block:@escaping (_ dic: Dictionary<String, Any>?, _ error: Error?) -> Void) {
-        
+class NetworkHandler: NSObject, Service {
+    
+    func request(endpoint: String, params: [String : Any]?, completion: @escaping ([String : Any]?, Error?) -> Void) {
         let sesion: URLSession = URLSession(configuration: URLSessionConfiguration.default)
         let set: CharacterSet = CharacterSet.urlQueryAllowed
-        let encondedUrlString: String = url.addingPercentEncoding(withAllowedCharacters: set)!
+        let encondedUrlString: String = endpoint.addingPercentEncoding(withAllowedCharacters: set)!
         let url: URL = URL(string: encondedUrlString)!
         
         let task: URLSessionDataTask = sesion.dataTask(with: url) { (data, urlResponse, error) in
             
-            if let error = error {                
-                block(nil, error)
+            if let error = error {
+                completion(nil, error)
                 return
             }
             
@@ -28,14 +27,14 @@ class NetworkHandler: NSObject {
             {
                 if let data = data {
                     let jsonDic: Any = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
-                    block(jsonDic as? Dictionary<String, Any>, nil);
+                    completion(jsonDic as? Dictionary<String, Any>, nil);
                 } else {
-                    block(nil, nil)
+                    completion(nil, nil)
                 }
             }
             catch
             {
-                block(nil, nil);
+                completion(nil, nil);
             }
         };
         

@@ -17,13 +17,21 @@ enum ServiceResponse<Model> {
 
 class BaseService<Model> {
     
-    let networkHandler: NetworkHandler = NetworkHandler()
+    // MARK: - Vars & Constants
     
-    func request(endpoint: String, params: [String: Any]? = nil, completion: @escaping (Dictionary<String, Any>?, _ error: Error?) -> Void) {
-        networkHandler.jSonWith(endpoint, andReturn: completion)
+    let service: Service
+    
+    // MARK: - LifeCycle
+    
+    init(service: Service = NetworkHandler()) {
+        self.service = service
     }
     
-    func parse(response _: AnyObject) -> [Model]? {
+    func request(endpoint: String, params: [String : Any]? = nil, completion: @escaping ([String : Any]?, Error?) -> Void) {
+        service.request(endpoint: endpoint, params: params, completion: completion)
+    }
+    
+    func parse(response: Any) -> [Model]? {
         return nil
     }
 }

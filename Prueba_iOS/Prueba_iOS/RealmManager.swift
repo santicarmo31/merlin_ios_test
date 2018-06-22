@@ -13,7 +13,7 @@ final class RealmManager {
     
     static let shared = RealmManager()
     
-    fileprivate var context: Realm!
+    var context: Realm!
     
     private init() {
         do {
