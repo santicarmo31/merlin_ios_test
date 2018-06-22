@@ -44,8 +44,7 @@ class AppsCollectionViewController: UICollectionViewController {
     // MARK: - Methods
     
     private func setupPresenter() {
-        presenter = AppPresenter(view: self)
-        presenter.title2 = "AppCollection"
+        presenter = AppPresenter(view: self)        
     }
     
     private func setupNavigationControllerBar() {

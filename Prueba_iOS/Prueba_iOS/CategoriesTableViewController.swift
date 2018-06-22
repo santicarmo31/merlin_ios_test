@@ -50,8 +50,7 @@ class CategoriesTableViewController: UITableViewController {
     }
     
     private func setupPresenter() {
-        presenter = AppPresenter(view: self)
-        presenter.title1 = "CategoriesTableView"
+        presenter = AppPresenter(view: self)        
     }
     
     
