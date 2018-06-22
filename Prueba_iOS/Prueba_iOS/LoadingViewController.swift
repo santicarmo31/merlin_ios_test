@@ -13,7 +13,6 @@ class LoadingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("me cree")
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
         
@@ -31,10 +30,6 @@ class LoadingViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             self?.activityIndicator.startAnimating()
         }
-    }
-    
-    deinit {
-        print("Me baje !!! ")
-    }
+    }        
 }
 
