@@ -23,6 +23,8 @@ class AppPresenter {
     unowned var view: AppView
     private let service: AppService
     
+    var title1: String?
+    var title2: String?
     
     init(view: AppView, service: AppService = AppService()) {
         self.view = view

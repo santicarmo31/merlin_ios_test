@@ -11,10 +11,10 @@ import Foundation
 extension UIViewController: BaseView {
     
     func startSpinner() {
-        startActivityIndicator()
+        showSpinner()
     }
     
     func stopSpinner() {
-        stopActivityIndicator()
+        hideSpinner()
     }
 }

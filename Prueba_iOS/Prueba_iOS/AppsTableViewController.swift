@@ -15,6 +15,8 @@ class AppsTableViewController: UITableViewController {
     var dataSource: [App] = Array()
     var category: Category?
     var presenter: AppPresenter!
+        
+    let emptyMessageViewController = EmptyMessageViewController()
     
     // MARK: - Life Cycle
     
@@ -51,6 +53,18 @@ class AppsTableViewController: UITableViewController {
             presenter.showApps()
         }
     }
+    
+    fileprivate func downloadImageFor(_ cell: AppTableViewCell, atIndexpath indexPath: IndexPath, fromUrl url: String?) {
+        cell.appImage.setImage(fromUrl: url, placeHolderImageName: "no_image_black") { (image) in
+            if let image = image {
+                DispatchQueue.main.async { [weak self] in
+                    if let cell = self?.tableView.cellForRow(at: indexPath) as? AppTableViewCell {
+                        cell.appImage.image = image
+                    }
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Table view data source
@@ -74,6 +88,9 @@ extension AppsTableViewController {
         
         appCell.setCellDataFrom(app: app)
         
+        let rawImageURL = app.iconImg ?? app.bannerImg        
+        downloadImageFor(appCell, atIndexpath: indexPath, fromUrl: rawImageURL)
+        
         return appCell
     }
 }
@@ -81,7 +98,9 @@ extension AppsTableViewController {
 // MARK: - AppView Conformance
 
 extension AppsTableViewController: AppView {
-    func showEmptyApps(message: String) {        
+    func showEmptyApps(message: String) {
+        emptyMessageViewController.message = message
+        add(emptyMessageViewController)
     }
     
     func showEmptyCategories(message: String) {}
@@ -89,6 +108,7 @@ extension AppsTableViewController: AppView {
     func list(categories: [Category]) { }
     
     func list(apps: [App]) {
+        emptyMessageViewController.remove()
         dataSource = apps
         tableView.reloadData()
     }

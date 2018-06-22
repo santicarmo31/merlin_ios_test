@@ -9,17 +9,12 @@
 import Foundation
 
 extension UIImageView {
-    func setImage(fromUrl url: String?, placeHolderImageName placeHolder: String = "no_image_black") {
+    func setImage(fromUrl url: String?, placeHolderImageName placeHolder: String = "no_image_black", completion: @escaping (UIImage?) -> Void) {
         let placeHolderImage = UIImage(named: placeHolder)
-        if image == nil && image != placeHolderImage {
-            image = placeHolderImage
-        }
+       
+        image = placeHolderImage
         
         let imageHandler = ImageCacheHandler()
-        imageHandler.imageForUrl(url, andReturn: { (image) in
-            if let image = image {
-                self.image = image
-            }
-        })
+        imageHandler.imageForUrl(url, andReturn: completion)
     }
 }

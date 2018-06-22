@@ -14,7 +14,7 @@ class CategoriesTableViewController: UITableViewController {
     
     var dataSource: [Category] = Array()
     var presenter: AppPresenter!
-    var emptyMessageView: UILabel?
+        
     
     // MARK: - Life Cycle
     
@@ -51,6 +51,7 @@ class CategoriesTableViewController: UITableViewController {
     
     private func setupPresenter() {
         presenter = AppPresenter(view: self)
+        presenter.title1 = "CategoriesTableView"
     }
     
     
@@ -104,30 +105,16 @@ extension CategoriesTableViewController {
 // MARK: - AppView Conformance
 
 extension CategoriesTableViewController: AppView {
-    func showEmptyApps(message: String) {        
-    }
-    
+    func showEmptyApps(message: String) {}
     
     func showEmptyCategories(message: String) {
-        
-        // TODO: Refactor the way to display empty messages (Jhon sundell child views.)
-        emptyMessageView = UILabel(frame: view.frame)
-        emptyMessageView?.textAlignment = .center
-        emptyMessageView?.text = message
-        emptyMessageView?.backgroundColor = .clear
-        view.addSubview(emptyMessageView!)
-        
-        emptyMessageView!.translatesAutoresizingMaskIntoConstraints = false
-        let attributes: [NSLayoutAttribute] = [.top, .bottom, .right, .left]
-        NSLayoutConstraint.activate(attributes.map {
-            NSLayoutConstraint(item: emptyMessageView!, attribute: $0, relatedBy: .equal, toItem: emptyMessageView!.superview, attribute: $0, multiplier: 1, constant: 0)
-        })        
+        showEmptyMessage(message)
     }
     
     func list(apps: [App]) {}
     
     func list(categories: [Category]) {
-        emptyMessageView?.removeFromSuperview()
+        hideEmptyMessage()
         self.dataSource = categories
         self.tableView.reloadData()
     }

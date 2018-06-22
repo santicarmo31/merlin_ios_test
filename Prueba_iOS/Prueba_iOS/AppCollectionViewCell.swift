@@ -15,18 +15,12 @@ class AppCollectionViewCell: UICollectionViewCell {
     @IBOutlet var appImage: UIImageView!
     @IBOutlet var appTitle: UILabel!
     @IBOutlet var appDescription: UILabel!
-    
-    // MARK: - Vars & Constants
-    var rawImageURL: String?
+        
     
     // MARK: - Methods
     
     func setCellDataFrom(app: App) {
         appTitle.text = app.title
-        appDescription.text = app.summitText        
-        
-        rawImageURL = app.iconImg ?? app.bannerImg
-        appImage.setImage(fromUrl: rawImageURL, placeHolderImageName: "no_image_black")
-        
+        appDescription.text = app.summitText
     }
 }

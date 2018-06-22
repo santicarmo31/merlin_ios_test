@@ -2,25 +2,38 @@
 //  UIViewController+ActivityIndicator.swift
 //  Prueba_iOS
 //
-//  Created by Santiago Carmona Gonzalez on 6/20/18.
+//  Created by Santiago Carmona Gonzalez on 6/22/18.
 //  Copyright © 2018 Humberto Cetina. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension UIViewController {
+    static var spinners: [String: LoadingViewController] = [:]
     
-    static let activityIndicator = UIActivityIndicatorView()
-    
-    func startActivityIndicator() {
-        let activityIndicator = UIViewController.activityIndicator
-        activityIndicator.activityIndicatorViewStyle = .gray
-        activityIndicator.center = view.center
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
+    var spinnerKey: String {
+        return String(describing: self)
     }
     
-    func stopActivityIndicator() {
-        UIViewController.activityIndicator.stopAnimating()
+    func showSpinner() {
+        var controller: LoadingViewController?
+        defer {
+            if let controller = controller {
+                add(controller)
+            }
+        }
+        
+        if let existingController = UIViewController.spinners[spinnerKey] {
+            controller = existingController
+        } else {            
+            controller = LoadingViewController()
+            UIViewController.spinners[spinnerKey] = controller
+        }
+    }
+    
+    func hideSpinner() {
+        if let controller = UIViewController.spinners[spinnerKey] {
+            controller.remove()
+        }
     }
 }

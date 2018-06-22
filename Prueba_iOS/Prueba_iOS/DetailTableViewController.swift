@@ -9,34 +9,23 @@
 import UIKit
 
 class DetailTableViewController: UITableViewController {
-
-    var app: App?
+    
+    // MARK: - IBOutlest
+    
     @IBOutlet var appImage: UIImageView!
     @IBOutlet var appTitle: UILabel!
     @IBOutlet var appDescription: UILabel!
     
+    // MARK: - Vars & Constants
+    
+    var app: App?
+    
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "shadow"), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage();
-        
-        if self.parent?.childViewControllers.first != self
-        {
-            self.navigationItem.rightBarButtonItem = nil;
-        }
-        
-        self.appTitle.text = self.app?.title;
-        self.appDescription.text = self.app?.summitText;
-        
-        let rawImageURL: String? = self.app?.bannerImg ?? self.app?.iconImg
-        let placeHolderImage = UIImage(named: "no_image_black")
-        
-        if let imageURL = rawImageURL, let url = URL(string: imageURL) {
-            appImage.setImageWith(url, placeholderImage: placeHolderImage)
-        } else {
-            appImage.image = placeHolderImage
-        }
+        setupNavigationControllerBar()
+        setupView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -45,11 +34,6 @@ class DetailTableViewController: UITableViewController {
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()        
-    }
-
-    @IBAction func dismissController(_ sender: Any) {
-        
-        self.dismiss(animated: true, completion: nil)
     }
     
     override func navigationShouldPopOnBackButton() -> Bool {
@@ -63,12 +47,49 @@ class DetailTableViewController: UITableViewController {
         return true;
     }
     
-    // MARK: - Table view data source
+    // MARK: - IBActions
+
+    @IBAction func dismissController(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
+    // MARK: - Methods
+    
+    private func setupView() {
+        self.appTitle.text = self.app?.title;
+        self.appDescription.text = self.app?.summitText;
+        self.setupImage()
+    }
+    
+    private func setupImage() {
+        let rawImageURL: String? = self.app?.bannerImg ?? self.app?.iconImg
+        let placeHolderImage = UIImage(named: "no_image_black")
+        
+        if let imageURL = rawImageURL, let url = URL(string: imageURL) {
+            appImage.setImageWith(url, placeholderImage: placeHolderImage)
+        } else {
+            appImage.image = placeHolderImage
+        }
+    }
+    
+    private func setupNavigationControllerBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "shadow"), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage();
+        
+        if self.parent?.childViewControllers.first != self
+        {
+            self.navigationItem.rightBarButtonItem = nil;
+        }
+    }
+}
+
+// MARK: - Table view data source
+
+extension DetailTableViewController {
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         return UITableViewAutomaticDimension;
     }

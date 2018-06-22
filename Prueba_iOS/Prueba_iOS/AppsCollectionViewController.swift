@@ -15,7 +15,6 @@ class AppsCollectionViewController: UICollectionViewController {
     var dataSource: [App] = Array()
     var presenter: AppPresenter!
     var category: Category?
-    var emptyMessageView: UILabel?
     
     // MARK: - Life Cycle
     
@@ -23,7 +22,7 @@ class AppsCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         setupPresenter()
         setupNavigationControllerBar()
-        addEmptyMessageView()
+        showEmptyMessage("No se ha seleccionado ninguna categoria")
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,6 +45,7 @@ class AppsCollectionViewController: UICollectionViewController {
     
     private func setupPresenter() {
         presenter = AppPresenter(view: self)
+        presenter.title2 = "AppCollection"
     }
     
     private func setupNavigationControllerBar() {
@@ -70,19 +70,17 @@ class AppsCollectionViewController: UICollectionViewController {
         }
     }
     
-    private func addEmptyMessageView() {
-        let message = "No se ha seleccionado ninguna categoria"
-        emptyMessageView = UILabel(frame: CGRect.zero)
-        emptyMessageView?.textAlignment = .center
-        emptyMessageView?.text = message
-        
-        view.addSubview(emptyMessageView!)
-        
-        emptyMessageView!.translatesAutoresizingMaskIntoConstraints = false
-        let attributes: [NSLayoutAttribute] = [.top, .bottom, .right, .left]
-        NSLayoutConstraint.activate(attributes.map {
-            NSLayoutConstraint(item: emptyMessageView!, attribute: $0, relatedBy: .equal, toItem: emptyMessageView!.superview, attribute: $0, multiplier: 1, constant: 0)
-        })        
+    fileprivate func downloadImageFor(_ cell: AppCollectionViewCell, atIndexpath indexPath: IndexPath, fromUrl url: String?) {
+        cell.appImage.setImage(fromUrl: url, placeHolderImageName: "no_image_black") { (image) in
+            guard let image = image else {
+                return
+            }
+            
+            DispatchQueue.main.async { [weak self] in
+                let cell = self?.collectionView?.cellForItem(at: indexPath) as? AppCollectionViewCell
+                cell?.appImage.image = image
+            }
+        }
     }
 }
 
@@ -104,8 +102,16 @@ extension AppsCollectionViewController {
         return appCell;
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-        
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let appCell: AppCollectionViewCell = cell as? AppCollectionViewCell {
+            let app: App = self.dataSource[indexPath.row]
+            
+            let rawImageURL = app.iconImg ?? app.bannerImg
+            downloadImageFor(appCell, atIndexpath: indexPath, fromUrl: rawImageURL)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 182, height: 182)
     }
     
@@ -126,8 +132,7 @@ extension AppsCollectionViewController {
 extension AppsCollectionViewController: IpadCategorySelectionDelegate {
     func categorySelected(_ category: Category?) {
         UIView.animate(withDuration: 0.30, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-            self?.emptyMessageView?.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
-            self?.emptyMessageView?.alpha = 0.0
+            self?.hideEmptyMessage()
         }) { [weak self] (finished) in
             if finished {
                 self?.category = category
@@ -140,7 +145,8 @@ extension AppsCollectionViewController: IpadCategorySelectionDelegate {
 // MARK: - AppView Conformance
 
 extension AppsCollectionViewController: AppView {
-    func showEmptyApps(message: String) {        
+    func showEmptyApps(message: String) {
+        showEmptyMessage(message)
     }
     
     func showEmptyCategories(message: String) {}

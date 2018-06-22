@@ -9,7 +9,7 @@
 import UIKit
 
 class ImageCacheHandler: NSObject {        
-
+    
     func imageNameFrom(_ url: String?) -> String? {
         
         if let url = url {
@@ -44,11 +44,8 @@ class ImageCacheHandler: NSObject {
                         return
                     }
                     try! data.write(to: imageUrl)
-                    let imageToCache = UIImage(data: data)
-                    
-                    DispatchQueue.main.async {
-                        block(imageToCache)
-                    }
+                    let imageToCache = UIImage(data: data)                    
+                    block(imageToCache)
                 }
                 
                 task.resume()

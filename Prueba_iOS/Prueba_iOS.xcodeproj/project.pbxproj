@@ -19,6 +19,9 @@
 		960E85BD20DB541F0088FE18 /* Apps.json in Resources */ = {isa = PBXBuildFile; fileRef = 960E85BC20DB541F0088FE18 /* Apps.json */; };
 		960E85BF20DB56F50088FE18 /* AppCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85BE20DB56F50088FE18 /* AppCacheService.swift */; };
 		960E85C220DB610B0088FE18 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960E85C120DB610B0088FE18 /* Cache.swift */; };
+		960FB8AA20DD61E500E1C2E6 /* UIViewController+Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960FB8A920DD61E500E1C2E6 /* UIViewController+Child.swift */; };
+		960FB8AE20DD627A00E1C2E6 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960FB8AD20DD627A00E1C2E6 /* LoadingViewController.swift */; };
+		960FB8B020DD62FA00E1C2E6 /* EmptyMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960FB8AF20DD62FA00E1C2E6 /* EmptyMessageViewController.swift */; };
 		9614D95C20D99D730014BE4C /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D95B20D99D730014BE4C /* RealmManager.swift */; };
 		9614D96420D9D27C0014BE4C /* RealmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D96320D9D27C0014BE4C /* RealmApp.swift */; };
 		9614D96820D9D3BF0014BE4C /* RealmCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9614D96720D9D3BF0014BE4C /* RealmCategory.swift */; };
@@ -30,7 +33,8 @@
 		962E6D4420DCAE0300764779 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E6D4320DCAE0300764779 /* Service.swift */; };
 		962E6D4620DCB03500764779 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E6D4520DCB03500764779 /* MockService.swift */; };
 		962E6D4B20DCB96900764779 /* MockApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962E6D4A20DCB96900764779 /* MockApps.swift */; };
-		964F76F420DA9D3B00CF0F06 /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F76F320DA9D3B00CF0F06 /* UIViewController+ActivityIndicator.swift */; };
+		9644AE5220DD7A2F006042E5 /* UIViewController+ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9644AE5120DD7A2F006042E5 /* UIViewController+ActivityIndicator.swift */; };
+		9644AE5420DD7A3E006042E5 /* UIViewController+EmptyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9644AE5320DD7A3E006042E5 /* UIViewController+EmptyMessage.swift */; };
 		964F76F620DAA4D000CF0F06 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964F76F520DAA4D000CF0F06 /* BaseView.swift */; };
 		DD3DD7B9A7E79C2705C6F0F6 /* Pods_Prueba_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC4204D63860C38933C7494 /* Pods_Prueba_iOSTests.framework */; };
 		E6BAC61C72B8B5584532FE15 /* Pods_Prueba_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B055BF33B6B25FD002F0C0CA /* Pods_Prueba_iOSUITests.framework */; };
@@ -91,6 +95,9 @@
 		960E85BC20DB541F0088FE18 /* Apps.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Apps.json; sourceTree = "<group>"; };
 		960E85BE20DB56F50088FE18 /* AppCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCacheService.swift; sourceTree = "<group>"; };
 		960E85C120DB610B0088FE18 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		960FB8A920DD61E500E1C2E6 /* UIViewController+Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Child.swift"; sourceTree = "<group>"; };
+		960FB8AD20DD627A00E1C2E6 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		960FB8AF20DD62FA00E1C2E6 /* EmptyMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMessageViewController.swift; sourceTree = "<group>"; };
 		9614D95B20D99D730014BE4C /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		9614D96320D9D27C0014BE4C /* RealmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmApp.swift; sourceTree = "<group>"; };
 		9614D96720D9D3BF0014BE4C /* RealmCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCategory.swift; sourceTree = "<group>"; };
@@ -102,7 +109,8 @@
 		962E6D4320DCAE0300764779 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		962E6D4520DCB03500764779 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
 		962E6D4A20DCB96900764779 /* MockApps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApps.swift; sourceTree = "<group>"; };
-		964F76F320DA9D3B00CF0F06 /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		9644AE5120DD7A2F006042E5 /* UIViewController+ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityIndicator.swift"; sourceTree = "<group>"; };
+		9644AE5320DD7A3E006042E5 /* UIViewController+EmptyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+EmptyMessage.swift"; sourceTree = "<group>"; };
 		964F76F520DAA4D000CF0F06 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		B055BF33B6B25FD002F0C0CA /* Pods_Prueba_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Prueba_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D904E6F3B553CA16C46BEB20 /* Pods-Prueba_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prueba_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Prueba_iOSTests/Pods-Prueba_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +251,37 @@
 			name = Cache;
 			sourceTree = "<group>";
 		};
+		960FB8A820DD5CF900E1C2E6 /* MVP */ = {
+			isa = PBXGroup;
+			children = (
+				F9787D1D1E65199500778A4E /* Models */,
+				F9787D1E1E65199E00778A4E /* Views */,
+				9614D95E20D9AED90014BE4C /* Presenters */,
+			);
+			name = MVP;
+			sourceTree = "<group>";
+		};
+		960FB8AB20DD61F400E1C2E6 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				960E859F20DAA5680088FE18 /* UIViewController+BaseView.swift */,
+				960E85A320DABF160088FE18 /* UIViewController+NetworkReachable.swift */,
+				960FB8A920DD61E500E1C2E6 /* UIViewController+Child.swift */,
+				9644AE5120DD7A2F006042E5 /* UIViewController+ActivityIndicator.swift */,
+				9644AE5320DD7A3E006042E5 /* UIViewController+EmptyMessage.swift */,
+			);
+			name = UIViewController;
+			sourceTree = "<group>";
+		};
+		960FB8AC20DD624E00E1C2E6 /* UtilsViews */ = {
+			isa = PBXGroup;
+			children = (
+				960FB8AD20DD627A00E1C2E6 /* LoadingViewController.swift */,
+				960FB8AF20DD62FA00E1C2E6 /* EmptyMessageViewController.swift */,
+			);
+			name = UtilsViews;
+			sourceTree = "<group>";
+		};
 		9614D95220D969AE0014BE4C /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +358,7 @@
 		9614D97C20DA14D90014BE4C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				960FB8AC20DD624E00E1C2E6 /* UtilsViews */,
 				9614D95420D999770014BE4C /* Protocols */,
 				964F76F220DA9D1F00CF0F06 /* Extensions */,
 				F9787D191E65196F00778A4E /* 3rd party */,
@@ -336,12 +376,18 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		962E6D4C20DD5C9500764779 /* AppDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				F92120F81E61DBCF0041DF8B /* AppDelegate.swift */,
+			);
+			name = AppDelegates;
+			sourceTree = "<group>";
+		};
 		964F76F220DA9D1F00CF0F06 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				964F76F320DA9D3B00CF0F06 /* UIViewController+ActivityIndicator.swift */,
-				960E859F20DAA5680088FE18 /* UIViewController+BaseView.swift */,
-				960E85A320DABF160088FE18 /* UIViewController+NetworkReachable.swift */,
+				960FB8AB20DD61F400E1C2E6 /* UIViewController */,
 				960E85A120DAA8680088FE18 /* UIImageView+ImageHandler.swift */,
 			);
 			name = Extensions;
@@ -401,12 +447,10 @@
 		F92120F71E61DBCF0041DF8B /* Prueba_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F9787D1D1E65199500778A4E /* Models */,
+				960FB8A820DD5CF900E1C2E6 /* MVP */,
+				962E6D4C20DD5C9500764779 /* AppDelegates */,
 				9614D97C20DA14D90014BE4C /* Common */,
-				9614D95E20D9AED90014BE4C /* Presenters */,
 				9614D95320D9990B0014BE4C /* Core */,
-				F92120F81E61DBCF0041DF8B /* AppDelegate.swift */,
-				F9787D1E1E65199E00778A4E /* Views */,
 				F92120FF1E61DBD00041DF8B /* Assets.xcassets */,
 				F92121041E61DBD00041DF8B /* Info.plist */,
 				F9787D411E65203900778A4E /* PruebaiOS-Bridging-Header.h */,
@@ -715,16 +759,19 @@
 			files = (
 				F9787D3F1E651F3800778A4E /* AGPushNoteView.m in Sources */,
 				9614D97920DA09B70014BE4C /* AppPresenter.swift in Sources */,
+				960FB8B020DD62FA00E1C2E6 /* EmptyMessageViewController.swift in Sources */,
 				F9787D441E661DD500778A4E /* UIViewController+BackButtonHandler.m in Sources */,
 				960E85A420DABF160088FE18 /* UIViewController+NetworkReachable.swift in Sources */,
 				9614D96420D9D27C0014BE4C /* RealmApp.swift in Sources */,
 				F9787D301E651AFA00778A4E /* DetailTableViewController.swift in Sources */,
 				F9787D361E651B3000778A4E /* ImageCacheHandler.swift in Sources */,
 				F9787D381E651B6300778A4E /* UIViewController+ViewControllerShowing.swift in Sources */,
+				9644AE5220DD7A2F006042E5 /* UIViewController+ActivityIndicator.swift in Sources */,
 				9614D97720DA04E80014BE4C /* NetworkHandler.swift in Sources */,
 				F9787D2C1E651A9000778A4E /* AppsTableViewController.swift in Sources */,
 				960E85A220DAA8680088FE18 /* UIImageView+ImageHandler.swift in Sources */,
 				9614D97520D9F69C0014BE4C /* AppService.swift in Sources */,
+				9644AE5420DD7A3E006042E5 /* UIViewController+EmptyMessage.swift in Sources */,
 				964F76F620DAA4D000CF0F06 /* BaseView.swift in Sources */,
 				F9787D221E651A1900778A4E /* AppTableViewCell.swift in Sources */,
 				F92120F91E61DBCF0041DF8B /* AppDelegate.swift in Sources */,
@@ -732,6 +779,7 @@
 				F9787D261E651A4F00778A4E /* App.swift in Sources */,
 				962E6D4420DCAE0300764779 /* Service.swift in Sources */,
 				F9787D2A1E651A7F00778A4E /* CategoriesTableViewController.swift in Sources */,
+				960FB8AE20DD627A00E1C2E6 /* LoadingViewController.swift in Sources */,
 				F9787D2E1E651AA900778A4E /* AppsCollectionViewController.swift in Sources */,
 				9614D96820D9D3BF0014BE4C /* RealmCategory.swift in Sources */,
 				960E85A620DADB100088FE18 /* CategoriesTableViewIpadController.swift in Sources */,
@@ -739,8 +787,8 @@
 				960E85BF20DB56F50088FE18 /* AppCacheService.swift in Sources */,
 				F9787D241E651A3200778A4E /* AppCollectionViewCell.swift in Sources */,
 				960E85A020DAA5680088FE18 /* UIViewController+BaseView.swift in Sources */,
-				964F76F420DA9D3B00CF0F06 /* UIViewController+ActivityIndicator.swift in Sources */,
 				F9787D281E651A5900778A4E /* Category.swift in Sources */,
+				960FB8AA20DD61E500E1C2E6 /* UIViewController+Child.swift in Sources */,
 				9614D96F20D9F2830014BE4C /* BaseService.swift in Sources */,
 				960E85C220DB610B0088FE18 /* Cache.swift in Sources */,
 			);
