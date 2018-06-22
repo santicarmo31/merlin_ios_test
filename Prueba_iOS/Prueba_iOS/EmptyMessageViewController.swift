@@ -36,8 +36,6 @@ class EmptyMessageViewController: UIViewController {
         
         NSLayoutConstraint.activate(
             [
-//                messageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//                messageLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
                 messageLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                 messageLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ]
